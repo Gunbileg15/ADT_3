@@ -80,9 +80,58 @@ def Dequeue():
     return DataToReturn
 
 # Exercise 4
+Queue = []
+HeadPointer = 0
+TailPointer = -1
+
+for i in range(8):
+    Queue.append(-1)
+
+
+def IsEmpty():
+    global HeadPointer,TailPointer
+    if HeadPointer > TailPointer:
+        return True
+    else:
+        return False
+
+def IsFull():
+    global TailPointer
+    if TailPointer == 7:
+        return True
+    else:
+        return False
+
+def Enqueue(Item):
+  global Queue, HeadPointer, TailPointer
+  if IsFull():
+    return False
+  TailPointer += 1
+  Queue[TailPointer] = Item
+  return True
+
+
+def Dequeue():
+  global Queue, HeadPointer, TailPointer
+  if IsEmpty():
+    return -1
+  DataToReturn = Queue[HeadPointer]
+  HeadPointer += 1
+  return DataToReturn
+
+
 def Peek():
-    # Write your code here
-    pass
+    if IsEmpty():
+        return -1
+    return Queue[HeadPointer]
+
+def ShowQueue():
+    if IsEmpty():
+        return ""
+    items = []
+    for i in range(HeadPointer, TailPointer + 1):
+        items.append(str(Queue[i]))
+    return " ".join(items)
 
 
 def ShowQueue():
