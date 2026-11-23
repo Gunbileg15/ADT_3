@@ -134,12 +134,25 @@ def ShowQueue():
     return " ".join(items)
 
 
-def ShowQueue():
-    # Write your code here
-    pass
-
-
 # Exercise 5
+Queue = []
+HeadPointer = 0
+TailPointer = -1
+
 def Canteen(Commands):
-    # Write your code here
-    pass
+  global Queue, HeadPointer, TailPointer
+
+  HeadPointer = 0
+  TailPointer = -1
+  served = []
+
+  for command in Commands:
+    if command == "serve":
+      student = Dequeue()
+      if student != -1:
+        served.append(student)
+    else:
+      name = command.split(" ")
+      Enqueue(name)
+
+  return served
