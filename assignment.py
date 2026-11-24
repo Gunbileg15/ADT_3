@@ -135,4 +135,20 @@ def ShowQueue():
 
 
 # Exercise 5
+def Canteen(Commands):
+  global Queue, HeadPointer, TailPointer
+  Queue = [-1] * 8
+  HeadPointer = 0
+  TailPointer = -1
+  served = []
 
+  for command in Commands:
+    if command == "serve":
+      student = Dequeue()
+      if student != -1:
+        served.append(student)
+    else:
+      name = command.split(" ")
+      Enqueue(name)
+
+return served
